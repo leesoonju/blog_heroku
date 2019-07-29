@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+<!--base.html 불러오는 태그-->
+
+{% block contents %}
+
+   
+    <div class = "container">
+        <form action="{% url 'create' %}">  
+            <br>
+            <h4>제목: </h4>
+            <input type="text" name="title">
+            <br><br>
+            <h4>본문: </h4>
+            <textarea cols=40 rows=10 name="body"></textarea>
+            <br><br>
+            <input type="submit" value="제출하기">
+        </form>
+    </div>
+{%endblock%}
+
+<!-- ####form강의 듣기 전 태그####-->
+
+
+<div class = "container">
+    <form method="POST">
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}  <!--as_table은 입력공간 태그 방식, 표의 형식으로 정렬해라/이거 없어도 잘 돌아감-->      
+    </table>
+    <br>
+        <input class = "btn btn-dark" type="submit" value="제출">
+    </form>
+</div>
